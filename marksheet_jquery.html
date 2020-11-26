@@ -1,0 +1,112 @@
+<html>
+<head>
+  <title> Mark Sheet </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+  <form id="marks_form" method="POST">
+      <center>
+          <table cellpadding="5" cellspacing="9">
+              <thead><h1>Marksheet Form</h1></thead>
+              <tr>
+                  <td>
+                      <label>
+                          Name
+                      </label>
+                  </td>
+                  <td>
+                      <input type="text" id="name" name="name" placeholder="Enter Name" required="1" />
+                  </td>
+                  <td>
+                      <strong>
+                          <label id="nm_err" style="color: red;"></label>
+                      </strong>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          English
+                      </label>
+                  </td>
+                  <td>
+                      <input type="number" id="eng" name="eng" placeholder="Marks of English" required="1" />
+                  </td>
+                  <td>
+                      <strong>
+                          <label id="eng_err" style="color: red;"></label>
+                      </strong>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          Maths
+                      </label>
+                  </td>
+                  <td>
+                      <input type="number" id="maths" name="maths" placeholder="Marks of Maths" required="1" />
+                  </td>
+                  <td>
+                      <strong>
+                          <label id="math_err" style="color: red;"></label>
+                      </strong>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          Gujarati
+                      </label>
+                  </td>
+                  <td>
+                      <input type="number" id="guj" name="guj" placeholder="Marks of Gujarati" required="1" />
+                  </td>
+                  <td>
+                      <strong>
+                          <label id="guj_err" style="color: red;"></label>
+                      </strong>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <input id="save" type="button" name="save" value="Save"/>
+                  </td>
+                  <td align="right">
+                      <input id="cancel" type="button" name="cancel" value="Cancel"/>
+                  </td>
+              </tr>
+          </table>
+
+  </form>
+  <table cellpadding="5" border="1" id="records">
+      <thead>
+          <h1>MarkSheet Data</h1>
+          <input type="text" name="search" class="search" placeholder="Search Students by Name..." style="width: 29%;font-size: 20px;" /><br/><br/>
+          <th>
+              Name
+          </th>
+          <th>
+              English <label class="sorting">&#8711;</label> <!-- &#8710; -->
+          </th>
+          <th>
+              Maths <label class="sorting">&#8711;</label>
+          </th>
+          <th>
+              Gujarati <label class="sorting">&#8711;</label>
+          </th>
+           <th>
+              Average
+          </th>
+          <th colspan="2">
+              Operations
+          </th>
+      </thead>
+      <tbody id="data">
+        
+      </tbody>
+  </table>
+  </center>
+  <script type="text/javascript" src="validations_jquery.js"></script>
+</body>
+</html>
