@@ -10,8 +10,6 @@ $("#save").click(function(){
     var guj_err = $("#guj_err");
 
     var invalid_name = /[0-9\~\!\`\@\#\$\%\^\&\*\(\)\-\+\=\[\]\{\}\'\"\:\;\<\>\?\,\.\/]/;
-    // var valid_em = /^([a-zA-Z0-9_\-\.])+\@([A-Za-z])+\.([A-Za-z])+$/;
-    // var valid_mob = /\+([0-9]{1})+([0-9]{10})/;
 
     nm_err.html((person.name) ? ((person.name.match(invalid_name)) ? "Name should contain alphabets only" : "") : 
         "Name is Required");
@@ -74,18 +72,39 @@ $("#records").on("click", ".edit", function (e) {
   });
 
 $(".sorting").click(function (){
-    var records = $('tr');
-    for (var i = 0; i < records.length-1; i++) {
-        for(var j = i+1; j< records.length-1; j++)
-            var col_i = $(records[i]).children("td");
-            var col_j = $(records[j]).children("td");
-            var m1 = $(col_i[1]).text();
-            var m2 = $(col_j[1]).text();
-            // alert(m1);
-            if(parseFloat(m1) > parseFloat(m2)){
-                $(col_i[1]).text(m2);
-                // alert('hjjjj');
-                $(col_j[1]).text(m1);
+    var id = $(this).prop("id");
+    var records = $('#records tr');
+    var swapped = 0;
+    for (var i = 1; i < records.length; i++) {
+        if(swapped){
+            records = $('#records tr');
+            i = 1; 
+            swapped = 0;           
+        }
+        for(var j = i+1; j < records.length; j++){
+            var col_i = $($(records[i])[0]).children("td");
+            var col_j = $($(records[j])[0]).children("td");
+            var m1 = $($(col_i[id])[0]).text();
+            var m2 = $($(col_j[id])[0]).text();
+            if(($(this).html()) ==  "\u2207"){
+                if(parseFloat(m1) > parseFloat(m2)){
+                    swap = 1;
+                    break;
+                }
             }
+            else{
+                if(parseFloat(m1) < parseFloat(m2)){
+                    swap = 1;
+                    break;
+                }
+            }
+        }
+        if(swap){
+            records[i].parentNode.insertBefore(records[j], records[i]);
+            swap = 0;
+            swapped = 1;       
+        }
     }
+
+    $(this).html(($(this).html() == "\u2207") ? "\u2206" : "\u2207");
 });
